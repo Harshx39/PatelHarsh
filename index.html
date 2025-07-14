@@ -6,141 +6,190 @@
   <title>Patel Harsh | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg-light: #f3f6fa;
+      --bg-dark: #0d1117;
+      --text-light: #333;
+      --text-dark: #fff;
+      --primary: #3f51b5;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #f0f2f5;
-      color: #333;
-      line-height: 1.6;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     header {
-      background: #0d1117;
-      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 20px 40px;
-      text-align: center;
       position: sticky;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      background: white;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-    header h1 {
-      font-size: 2.8rem;
+    body.dark header {
+      background: #161b22;
     }
 
-    header p {
-      font-size: 1.2rem;
-      color: #c9d1d9;
+    .logo {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--primary);
     }
 
     nav {
-      margin-top: 10px;
+      display: flex;
+      gap: 20px;
     }
 
     nav a {
-      color: #58a6ff;
-      margin: 0 12px;
+      color: inherit;
       text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
+      font-weight: 500;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #1f6feb;
+      color: var(--primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: inherit;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      padding-left: 80px;
+      background: radial-gradient(circle at 20% 20%, #e6edf4, var(--bg-light));
+      position: relative;
+    }
+
+    .hero-content {
+      z-index: 1;
+    }
+
+    .tag {
+      background: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .title-box {
+      margin-top: 15px;
+      background: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(to bottom right, #dfe6ee, #f1f4f9);
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle.small { width: 20px; height: 20px; bottom: 100px; left: 30%; animation-delay: 0s; }
+    .circle.medium { width: 50px; height: 50px; top: 200px; right: 10%; animation-delay: 2s; }
+    .circle.large { width: 100px; height: 100px; top: 400px; left: 20%; animation-delay: 4s; }
+    .circle.xlarge { width: 180px; height: 180px; bottom: 0; right: 20%; animation-delay: 1s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
     }
 
     h2 {
       font-size: 2rem;
-      margin-bottom: 30px;
-      color: #0d1117;
-      position: relative;
-    }
-
-    h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #007acc;
-      margin-top: 10px;
-    }
-
-    #about p {
-      font-size: 1.1rem;
-      color: #444;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      margin-bottom: 20px;
+      color: var(--primary);
     }
 
     .project-card {
       background: white;
-      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      border-left: 5px solid #007acc;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .project-card strong {
-      font-size: 1.2rem;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    #contact p, .socials {
-      font-size: 1.1rem;
-      margin: 10px 0;
-    }
-
-    .socials a {
-      display: inline-block;
-      margin: 10px 10px 0 0;
-      text-decoration: none;
-      color: #007acc;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .socials a:hover {
-      color: #004b8d;
+    body.dark .project-card {
+      background: #1e2732;
     }
 
     footer {
-      background: #0d1117;
-      color: white;
       text-align: center;
       padding: 20px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
+      nav {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        right: 40px;
+        top: 60px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding: 20px;
+        border-radius: 8px;
       }
-      nav a {
-        display: inline-block;
-        margin: 8px;
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
       }
     }
   </style>
@@ -148,37 +197,48 @@
 <body>
 
   <header>
-    <h1>Patel Harsh</h1>
-    <p>Web Developer | React Enthusiast | Problem Solver</p>
-    <nav>
+    <div class="logo">Patel Harsh</div>
+    <nav id="nav">
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    </div>
   </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="tag">👋 Hello, I am</div>
+      <h1>Patel Harsh</h1>
+      <div class="title-box">Web Developer | React.js Specialist</div>
+    </div>
+    <div class="circle small"></div>
+    <div class="circle medium"></div>
+    <div class="circle large"></div>
+    <div class="circle xlarge"></div>
+  </section>
 
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm Patel Harsh, a frontend developer with a passion for crafting clean and interactive UIs using React.js. I enjoy solving real-world problems and constantly learning new web technologies.
+      I'm a frontend developer passionate about creating seamless web experiences using React.js. I believe in clean code, responsive design, and continuous learning. My goal is to build fast, accessible, and scalable applications that make a difference.
     </p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <strong>QR Code App</strong>
-        A React-based QR generator and scanner with mobile number verification.
-      </div>
-      <div class="project-card">
-        <strong>Kanban Task Board</strong>
-        A drag-and-drop task board with Redux state management.
-      </div>
-      <div class="project-card">
-        <strong>Car Service Website</strong>
-        A PHP-MySQL platform for booking car services online.
-      </div>
+    <div class="project-card">
+      <strong>QR Code App</strong> – React app for generating & verifying QR codes with mobile linking.
+    </div>
+    <div class="project-card">
+      <strong>Kanban Task Board</strong> – Drag & drop task manager with Redux state.
+    </div>
+    <div class="project-card">
+      <strong>Car Service Website</strong> – PHP & MySQL booking portal for car services.
     </div>
   </section>
 
@@ -186,16 +246,37 @@
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:patelharsh8487@gmail.com">patelharsh8487@gmail.com</a></p>
     <p>Phone: +91-7572834489</p>
-    <div class="socials">
-      <a href="https://github.com/Harshx39" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/patel-harsh-6b3829263/" target="_blank">LinkedIn</a>
+    <p>
+      <a href="https://github.com/Harshx39" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/patel-harsh-6b3829263/" target="_blank">LinkedIn</a> |
       <a href="https://instagram.com/realhxmusic" target="_blank">Instagram</a>
-    </div>
+    </p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Patel Harsh. All rights reserved.</p>
+    &copy; 2025 Patel Harsh. All rights reserved.
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("show");
+    }
+
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    });
+
+    window.onload = () => {
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.add("dark");
+        toggle.textContent = "☀️";
+      }
+    };
+  </script>
 
 </body>
 </html>
