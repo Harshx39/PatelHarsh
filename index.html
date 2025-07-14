@@ -14,8 +14,9 @@
     }
 
     body {
-      background: #f5f5f5;
+      background: #f0f2f5;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
@@ -23,51 +24,124 @@
       color: white;
       padding: 20px 40px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     header h1 {
-      margin-bottom: 5px;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #c9d1d9;
+    }
+
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
       color: #58a6ff;
-      margin: 0 15px;
+      margin: 0 12px;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1f6feb;
     }
 
     section {
-      padding: 40px;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     h2 {
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: 30px;
       color: #0d1117;
+      position: relative;
     }
 
-    .projects ul {
-      list-style-type: none;
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #007acc;
+      margin-top: 10px;
     }
 
-    .projects li {
-      margin-bottom: 10px;
-      padding: 10px;
+    #about p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
       background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       border-left: 5px solid #007acc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card strong {
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    #contact p, .socials {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .socials a {
+      display: inline-block;
+      margin: 10px 10px 0 0;
+      text-decoration: none;
+      color: #007acc;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover {
+      color: #004b8d;
     }
 
     footer {
       background: #0d1117;
       color: white;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
     }
 
-    .socials a {
-      color: #58a6ff;
-      margin: 0 10px;
-      text-decoration: none;
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
     }
   </style>
 </head>
@@ -86,23 +160,26 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      Hello! I'm Patel Harsh, a passionate web developer specializing in React.js and modern frontend technologies. I love building interactive, responsive, and user-friendly web applications that solve real-world problems.
+      I'm Patel Harsh, a frontend developer with a passion for crafting clean and interactive UIs using React.js. I enjoy solving real-world problems and constantly learning new web technologies.
     </p>
   </section>
 
-  <section id="projects" class="projects">
+  <section id="projects">
     <h2>Projects</h2>
-    <ul>
-      <li>
-        <strong>QR Code App</strong> - A React app for generating and scanning QR codes linked with mobile verification.
-      </li>
-      <li>
-        <strong>Kanban Task Board</strong> - Dynamic drag-and-drop task board with Redux integration.
-      </li>
-      <li>
-        <strong>Car Service Website</strong> - PHP + MySQL-based website for car service bookings and management.
-      </li>
-    </ul>
+    <div class="projects">
+      <div class="project-card">
+        <strong>QR Code App</strong>
+        A React-based QR generator and scanner with mobile number verification.
+      </div>
+      <div class="project-card">
+        <strong>Kanban Task Board</strong>
+        A drag-and-drop task board with Redux state management.
+      </div>
+      <div class="project-card">
+        <strong>Car Service Website</strong>
+        A PHP-MySQL platform for booking car services online.
+      </div>
+    </div>
   </section>
 
   <section id="contact">
