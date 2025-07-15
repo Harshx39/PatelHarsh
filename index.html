@@ -509,6 +509,12 @@
                 <a href="https://instagram.com/realhxmusic" target="_blank" style="color: inherit;"><i
                         class="fab fa-instagram fa-lg"></i></a>
             </div>
+
+            <!-- Resume Button -->
+            <a href="https://example.com/harsh_resume.pdf" target="_blank"
+                style="display: inline-block; margin-top: 20px; background: var(--primary); color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 500; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: 0.3s;">
+                📄 Resume
+            </a>
         </div>
 
         <!-- Avatar or SVG -->
@@ -722,13 +728,11 @@
     <!-- Add this in body just before </body> -->
     <canvas id="particles-canvas"
         style="position: absolute; top: 0; left: 0; z-index: 0; width: 100%; height: 100vh;"></canvas>
-
     <script>
         const canvas = document.getElementById("particles-canvas");
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         const particlesArray = [];
         for (let i = 0; i < 50; i++) {
             particlesArray.push({
@@ -739,7 +743,6 @@
                 dy: (Math.random() - 0.5) * 1,
             });
         }
-
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particlesArray.forEach(p => {
@@ -754,7 +757,6 @@
             });
             requestAnimationFrame(animateParticles);
         }
-
         animateParticles();
         window.onresize = () => {
             canvas.width = window.innerWidth;
