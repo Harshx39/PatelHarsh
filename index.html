@@ -10,14 +10,46 @@
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --primary: #4e8cff;
-            --accent: #ff5f6d;
-            --bg-light: #f7f9fc;
-            --bg-dark: #1c1c1c;
+            --primary: #6a5acd;
+            /* SlateBlue */
+            --accent: #00c9a7;
+            /* Mint */
+            --bg-light: #f4faff;
+            --bg-dark: #111827;
+            /* Tailwind's true dark */
             --text-light: #1a1a1a;
-            --text-dark: #f1f1f1;
+            --text-dark: #f9f9f9;
             --card-bg-light: #ffffff;
-            --card-bg-dark: #292929;
+            --card-bg-dark: #1f2937;
+            /* Tailwind dark gray */
+        }
+
+        body {
+            background: linear-gradient(270deg, #e0f7fa, #e6e6ff, #fffaf0, #ffe4e1);
+            background-size: 800% 800%;
+            animation: gradientBG 18s ease infinite;
+            color: var(--text-light);
+        }
+
+        body.dark {
+            background: linear-gradient(270deg, #0f172a, #1e293b, #0f172a, #1e293b);
+            background-size: 800% 800%;
+            animation: gradientBG 18s ease infinite;
+            color: var(--text-dark);
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
 
@@ -51,6 +83,26 @@
             100% {
                 background-position: 0% 50%;
             }
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        span {
+            color: inherit;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary);
+        }
+
+        body.dark h1,
+        body.dark h2,
+        body.dark h3 {
+            color: var(--accent);
         }
 
         header {
@@ -128,7 +180,7 @@
         }
 
         .tag {
-            background: white;
+            background: #4e8cff ;
             padding: 10px 20px;
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -397,33 +449,45 @@
     </section>
 
     <section id="about" style="padding: 60px 40px;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">
-        I Know That <span style="color: #4e8cff;">Good Development</span><br>
-        Means <span style="color: #4e8cff;">Good Business</span>
-    </h2>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">
+            I Know That <span style="color: #4e8cff;">Good Development</span><br>
+            Means <span style="color: #4e8cff;">Good Business</span>
+        </h2>
 
-    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; margin-bottom: 60px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721290.png" alt="Backend" style="width: 300px; border-radius: 12px;" />
-        <div style="flex: 1;">
-            <h3>Backend Development</h3>
-            <p>💻 When it comes to backend development, I bring a versatile skill set to build robust and efficient web applications. With experience in <strong>Node.js, Python, Java</strong>, and frameworks like <strong>Express.js, Django, Spring</strong>, I create backend systems that handle complex challenges.</p>
-            <p>🔐 Data protection and secure authentication are top priorities. I focus on safeguarding user information and building trust.</p>
-            <p>🛠️ I specialize in debugging, deployment, and maintaining system integrity to ensure smooth operations with minimal downtime.</p>
-            <p>📚 I stay updated with the latest tech to ensure I evolve alongside the ever-changing backend ecosystem.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; margin-bottom: 60px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2721/2721290.png" alt="Backend"
+                style="width: 300px; border-radius: 12px;" />
+            <div style="flex: 1;">
+                <h3>Backend Development</h3>
+                <p>💻 When it comes to backend development, I bring a versatile skill set to build robust and efficient
+                    web applications. With experience in <strong>Node.js, Python, Java</strong>, and frameworks like
+                    <strong>Express.js, Django, Spring</strong>, I create backend systems that handle complex
+                    challenges.</p>
+                <p>🔐 Data protection and secure authentication are top priorities. I focus on safeguarding user
+                    information and building trust.</p>
+                <p>🛠️ I specialize in debugging, deployment, and maintaining system integrity to ensure smooth
+                    operations with minimal downtime.</p>
+                <p>📚 I stay updated with the latest tech to ensure I evolve alongside the ever-changing backend
+                    ecosystem.</p>
+            </div>
         </div>
-    </div>
 
-    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; flex-direction: row-reverse;">
-        <img src="https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png" alt="React" style="width: 300px; border-radius: 12px;" />
-        <div style="flex: 1;">
-            <h3>React Development</h3>
-            <p>🔷 As a React developer, I specialize in building visually stunning, component-based UIs using <strong>React.js</strong>, <strong>Redux</strong>, and <strong>React Router</strong>.</p>
-            <p>✨ I bring ideas to life with reusable components, great performance, and a deep understanding of <strong>HTML, CSS, and JavaScript</strong>.</p>
-            <p>💡 I stay current with React Hooks and best practices, delivering scalable and modern apps that stand out.</p>
-            <p>🚀 The React ecosystem is constantly growing, and I love staying ahead by continuously learning and adapting.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; flex-direction: row-reverse;">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png" alt="React"
+                style="width: 300px; border-radius: 12px;" />
+            <div style="flex: 1;">
+                <h3>React Development</h3>
+                <p>🔷 As a React developer, I specialize in building visually stunning, component-based UIs using
+                    <strong>React.js</strong>, <strong>Redux</strong>, and <strong>React Router</strong>.</p>
+                <p>✨ I bring ideas to life with reusable components, great performance, and a deep understanding of
+                    <strong>HTML, CSS, and JavaScript</strong>.</p>
+                <p>💡 I stay current with React Hooks and best practices, delivering scalable and modern apps that stand
+                    out.</p>
+                <p>🚀 The React ecosystem is constantly growing, and I love staying ahead by continuously learning and
+                    adapting.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <section id="work">
