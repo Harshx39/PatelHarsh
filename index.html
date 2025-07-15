@@ -151,8 +151,42 @@
             transform: translateY(0);
         }
 
+        nav a.nav-link {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+
+        nav a.nav-link:hover {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        nav a.nav-link::after {
+            content: attr(data-icon);
+            margin-left: 6px;
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: 0.3s;
+        }
+
+        nav a.nav-link:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .menu-toggle {
             display: none;
+            background: linear-gradient(-45deg, #f7f9fc, #d8e9ff, #e2f1ff, #f0f5ff);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -164,6 +198,17 @@
             border: none;
             color: inherit;
             margin-left: 20px;
+        }
+
+        header {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.6);
+            /* Light mode */
+        }
+
+        body.dark header {
+            background: rgba(17, 24, 39, 0.6);
+            /* Dark mode */
         }
 
         .hero {
@@ -180,7 +225,7 @@
         }
 
         .tag {
-            background: #4e8cff ;
+            background: #4e8cff;
             padding: 10px 20px;
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -427,11 +472,11 @@
     <header>
         <div class="logo">PATEL HARSH</div>
         <nav id="nav">
-            <a href="#home" data-icon="🏠">Home</a>
-            <a href="#about" data-icon="🙋‍♂️">About</a>
-            <a href="#work" data-icon="🛠️">Work</a>
-            <a href="#skills" data-icon="📩">Skills</a>
-            <a href="#contact" data-icon="📩">Contact</a>
+            <a href="#home" data-icon="🏠" class="nav-link">Home</a>
+            <a href="#about" data-icon="🙋‍♂️" class="nav-link">About</a>
+            <a href="#work" data-icon="🛠️" class="nav-link">Work</a>
+            <a href="#skills" data-icon="💡" class="nav-link">Skills</a>
+            <a href="#contact" data-icon="📩" class="nav-link">Contact</a>
 
         </nav>
         <div>
@@ -440,13 +485,40 @@
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
+    <section class="hero" id="home"
+        style="flex-direction: row; flex-wrap: wrap; gap: 40px; justify-content: space-between; padding-right: 80px;">
+        <div class="hero-content" style="flex: 1; min-width: 280px;">
             <div class="tag"><span>👋</span> Hello, I am</div>
             <h1>Patel Harsh</h1>
             <div class="title-box">WEB DEVELOPER | REACT JS SPECIALIST</div>
+
+            <!-- Typing animation text -->
+            <p id="typing-text" style="margin-top: 20px; font-size: 1.2rem; color: #333;"></p>
+
+            <!-- CTA Button -->
+            <a href="#contact"
+                style="display: inline-block; margin-top: 30px; padding: 12px 24px; background: var(--primary); color: #fff; border-radius: 10px; text-decoration: none; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: 0.3s;">Let's
+                Connect 🚀</a>
+
+            <!-- Social Icons -->
+            <div style="margin-top: 25px;">
+                <a href="https://github.com/Harshx39" target="_blank" style="margin-right: 15px; color: inherit;"><i
+                        class="fab fa-github fa-lg"></i></a>
+                <a href="https://linkedin.com/in/patel-harsh-6b3829263/" target="_blank"
+                    style="margin-right: 15px; color: inherit;"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="https://instagram.com/realhxmusic" target="_blank" style="color: inherit;"><i
+                        class="fab fa-instagram fa-lg"></i></a>
+            </div>
+        </div>
+
+        <!-- Avatar or SVG -->
+        <div style="flex: 1; min-width: 280px; display: flex; justify-content: center;">
+            <img src="https://i.ibb.co/FzLVcZL/developer-boy.png" alt="Developer Illustration"
+                style="max-width: 100%; height: auto; border-radius: 20px;" />
         </div>
     </section>
+
+
 
     <section id="about" style="padding: 60px 40px;">
         <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">
@@ -462,7 +534,8 @@
                 <p>💻 When it comes to backend development, I bring a versatile skill set to build robust and efficient
                     web applications. With experience in <strong>Node.js, Python, Java</strong>, and frameworks like
                     <strong>Express.js, Django, Spring</strong>, I create backend systems that handle complex
-                    challenges.</p>
+                    challenges.
+                </p>
                 <p>🔐 Data protection and secure authentication are top priorities. I focus on safeguarding user
                     information and building trust.</p>
                 <p>🛠️ I specialize in debugging, deployment, and maintaining system integrity to ensure smooth
@@ -478,9 +551,11 @@
             <div style="flex: 1;">
                 <h3>React Development</h3>
                 <p>🔷 As a React developer, I specialize in building visually stunning, component-based UIs using
-                    <strong>React.js</strong>, <strong>Redux</strong>, and <strong>React Router</strong>.</p>
+                    <strong>React.js</strong>, <strong>Redux</strong>, and <strong>React Router</strong>.
+                </p>
                 <p>✨ I bring ideas to life with reusable components, great performance, and a deep understanding of
-                    <strong>HTML, CSS, and JavaScript</strong>.</p>
+                    <strong>HTML, CSS, and JavaScript</strong>.
+                </p>
                 <p>💡 I stay current with React Hooks and best practices, delivering scalable and modern apps that stand
                     out.</p>
                 <p>🚀 The React ecosystem is constantly growing, and I love staying ahead by continuously learning and
@@ -531,17 +606,6 @@
         </div>
     </section>
 
-
-    <!-- <section id="skills">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:patelharsh8487@gmail.com">patelharsh8487@gmail.com</a></p>
-        <p>Phone: +91-7572834489</p>
-        <p>
-            <a href="https://github.com/Harshx39" target="_blank">GitHub</a> |
-            <a href="https://linkedin.com/in/patel-harsh-6b3829263/" target="_blank">LinkedIn</a> |
-            <a href="https://instagram.com/realhxmusic" target="_blank">Instagram</a>
-        </p>
-    </section> -->
 
     <section id="skills">
         <h2 style="text-align: center; margin-bottom: 30px;">Skills</h2>
@@ -630,8 +694,73 @@
             });
         }
     </script>
+    <script>
+        const textArray = ["Frontend Enthusiast", "Backend Builder", "MERN Stack Developer", "Creative Problem Solver"];
+        let index = 0;
+        let charIndex = 0;
+        const typingSpeed = 100;
+        const pause = 2000;
 
+        function typeEffect() {
+            const textElement = document.getElementById("typing-text");
+            if (charIndex < textArray[index].length) {
+                textElement.textContent += textArray[index].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeEffect, typingSpeed);
+            } else {
+                setTimeout(() => {
+                    textElement.textContent = "";
+                    charIndex = 0;
+                    index = (index + 1) % textArray.length;
+                    typeEffect();
+                }, pause);
+            }
+        }
 
+        window.addEventListener("load", typeEffect);
+    </script>
+    <!-- Add this in body just before </body> -->
+    <canvas id="particles-canvas"
+        style="position: absolute; top: 0; left: 0; z-index: 0; width: 100%; height: 100vh;"></canvas>
+
+    <script>
+        const canvas = document.getElementById("particles-canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        for (let i = 0; i < 50; i++) {
+            particlesArray.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 3 + 1,
+                dx: (Math.random() - 0.5) * 1,
+                dy: (Math.random() - 0.5) * 1,
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(74, 144, 226, 0.5)";
+                ctx.fill();
+                p.x += p.dx;
+                p.y += p.dy;
+                if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+    </script>
 
 </body>
 
