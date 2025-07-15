@@ -10,15 +10,16 @@
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --primary: #3f51b5;
-            --accent: #ff6f61;
-            --bg-light: #f0f2fa;
-            --bg-dark: #121212;
-            --text-light: #222;
+            --primary: #4e8cff;
+            --accent: #ff5f6d;
+            --bg-light: #f7f9fc;
+            --bg-dark: #1c1c1c;
+            --text-light: #1a1a1a;
             --text-dark: #f1f1f1;
             --card-bg-light: #ffffff;
-            --card-bg-dark: #1f1f1f;
+            --card-bg-dark: #292929;
         }
+
 
         * {
             margin: 0;
@@ -28,17 +29,15 @@
         }
 
         body {
-            background: linear-gradient(-45deg, #f0f2fa, #d3e0ea, #cfd9df, #e2ebf0);
+            background: linear-gradient(-45deg, #f7f9fc, #d8e9ff, #e2f1ff, #f0f5ff);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-light);
-            transition: background 0.5s ease, color 0.3s ease;
+            animation: gradientBG 20s ease infinite;
         }
 
         body.dark {
-            background: linear-gradient(-45deg, #1e1e1e, #2a2a2a, #121212, #252525);
-            color: var(--text-dark);
+            background: linear-gradient(-45deg, #1c1c1c, #292929, #1a1a1a, #202020);
         }
+
 
         @keyframes gradientBG {
             0% {
@@ -137,19 +136,23 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .title-box {
-            margin-top: 15px;
-            background: white;
-            padding: 12px 24px;
+            margin-top: 20px;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 28px;
             border-radius: 12px;
             font-weight: 500;
-            color: #333;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
+
 
         section {
             min-height: 100vh;
@@ -216,19 +219,22 @@
         }
 
         .contact-form button {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
             margin-top: 10px;
+            transition: 0.3s ease;
         }
 
         .contact-form button:hover {
-            background: #2c3ca5;
+            transform: translateY(-2px);
+            opacity: 0.95;
         }
+
 
         #skills {
             padding: 60px 40px;
@@ -271,9 +277,65 @@
         }
 
         .skill img:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
 
+
+        .filter-btn {
+            background: #e6edff;
+            border: none;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg-light);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
 
         @media (max-width: 768px) {
             nav {
@@ -315,8 +377,8 @@
         <nav id="nav">
             <a href="#home" data-icon="🏠">Home</a>
             <a href="#about" data-icon="🙋‍♂️">About</a>
-            <a href="#projects" data-icon="🛠️">Work</a>
-            <a href="#contact" data-icon="📩">Skills</a>
+            <a href="#work" data-icon="🛠️">Work</a>
+            <a href="#skills" data-icon="📩">Skills</a>
             <a href="#contact" data-icon="📩">Contact</a>
 
         </nav>
@@ -334,29 +396,79 @@
         </div>
     </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I'm a frontend developer passionate about creating seamless web experiences using React.js. I believe in
-            clean code, responsive design, and continuous learning. My goal is to build fast, accessible, and scalable
-            applications that make a difference.
-        </p>
+    <section id="about" style="padding: 60px 40px;">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">
+        I Know That <span style="color: #4e8cff;">Good Development</span><br>
+        Means <span style="color: #4e8cff;">Good Business</span>
+    </h2>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; margin-bottom: 60px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721290.png" alt="Backend" style="width: 300px; border-radius: 12px;" />
+        <div style="flex: 1;">
+            <h3>Backend Development</h3>
+            <p>💻 When it comes to backend development, I bring a versatile skill set to build robust and efficient web applications. With experience in <strong>Node.js, Python, Java</strong>, and frameworks like <strong>Express.js, Django, Spring</strong>, I create backend systems that handle complex challenges.</p>
+            <p>🔐 Data protection and secure authentication are top priorities. I focus on safeguarding user information and building trust.</p>
+            <p>🛠️ I specialize in debugging, deployment, and maintaining system integrity to ensure smooth operations with minimal downtime.</p>
+            <p>📚 I stay updated with the latest tech to ensure I evolve alongside the ever-changing backend ecosystem.</p>
+        </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; flex-direction: row-reverse;">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png" alt="React" style="width: 300px; border-radius: 12px;" />
+        <div style="flex: 1;">
+            <h3>React Development</h3>
+            <p>🔷 As a React developer, I specialize in building visually stunning, component-based UIs using <strong>React.js</strong>, <strong>Redux</strong>, and <strong>React Router</strong>.</p>
+            <p>✨ I bring ideas to life with reusable components, great performance, and a deep understanding of <strong>HTML, CSS, and JavaScript</strong>.</p>
+            <p>💡 I stay current with React Hooks and best practices, delivering scalable and modern apps that stand out.</p>
+            <p>🚀 The React ecosystem is constantly growing, and I love staying ahead by continuously learning and adapting.</p>
+        </div>
+    </div>
+</section>
+
+
+    <section id="work">
+        <h2 style="text-align: center;">My Websites</h2>
+        <div style="text-align: center; margin: 20px 0;">
+            <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+            <button class="filter-btn" onclick="filterProjects('uiux')">UI/UX</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web App</button>
+            <button class="filter-btn" onclick="filterProjects('mobile')">Mobile App</button>
+            <button class="filter-btn" onclick="filterProjects('react')">React JS</button>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card filter-item react">
+                <img src="https://i.ibb.co/SQkwz4c/gpt.png" alt="GPT Website">
+                <span class="project-tag">React JS</span>
+                <h3>GPT</h3>
+                <p>I found Figma design for ChatGPT website. So I made a responsive design using ReactJS.</p>
+            </div>
+
+            <div class="project-card filter-item react">
+                <img src="https://i.ibb.co/KLVFwN0/dalle.png" alt="Dalle">
+                <span class="project-tag">React JS</span>
+                <h3>Dalle</h3>
+                <p>Clone of Dalle with a community area to post images and prompts.</p>
+            </div>
+
+            <div class="project-card filter-item web react">
+                <img src="https://i.ibb.co/jR5Q6Fh/yariga.png" alt="Yariga">
+                <span class="project-tag">React JS</span>
+                <h3>Yariga</h3>
+                <p>MERN Stack dashboard for real estate. Includes profiles, login, and property listings.</p>
+            </div>
+
+            <div class="project-card filter-item uiux">
+                <img src="https://i.ibb.co/zsMP3tK/hoobank.png" alt="HooBank">
+                <span class="project-tag">UI/UX</span>
+                <h3>HooBank</h3>
+                <p>This is the responsive redesign of the HooBank website.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-card">
-            <strong>QR Code App</strong> – React app for generating & verifying QR codes with mobile linking.
-        </div>
-        <div class="project-card">
-            <strong>Kanban Task Board</strong> – Drag & drop task manager with Redux state.
-        </div>
-        <div class="project-card">
-            <strong>Car Service Website</strong> – PHP & MySQL booking portal for car services.
-        </div>
-    </section>
 
-    <section id="contact">
+    <!-- <section id="skills">
         <h2>Contact Me</h2>
         <p>Email: <a href="mailto:patelharsh8487@gmail.com">patelharsh8487@gmail.com</a></p>
         <p>Phone: +91-7572834489</p>
@@ -365,7 +477,7 @@
             <a href="https://linkedin.com/in/patel-harsh-6b3829263/" target="_blank">LinkedIn</a> |
             <a href="https://instagram.com/realhxmusic" target="_blank">Instagram</a>
         </p>
-    </section>
+    </section> -->
 
     <section id="skills">
         <h2 style="text-align: center; margin-bottom: 30px;">Skills</h2>
@@ -403,14 +515,19 @@
     </section>
 
 
-    <footer>
-        <h3>☕ Take a coffee and chat with me</h3>
+    <section id="contact">
+        <h2 style="text-align: center;">☕ Let’s Have a Chat</h2>
+        <p style="text-align: center; font-size: 1.1rem;">Have an idea or just want to connect?</p>
         <form class="contact-form">
             <input type="text" placeholder="Your Name" required />
             <input type="email" placeholder="Your Email" required />
             <textarea rows="4" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
+            <button type="submit">🚀 Send Message</button>
         </form>
+    </section>
+
+
+    <footer>
         <p style="margin-top: 20px;">&copy; 2025 Patel Harsh. All rights reserved.</p>
     </footer>
 
@@ -434,6 +551,24 @@
             }
         };
     </script>
+
+    <script>
+        function filterProjects(category) {
+            document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+
+            document.querySelectorAll(".filter-item").forEach(card => {
+                if (category === "all") {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = card.classList.contains(category) ? "block" : "none";
+                }
+            });
+        }
+    </script>
+
+
+
 </body>
 
 </html>
